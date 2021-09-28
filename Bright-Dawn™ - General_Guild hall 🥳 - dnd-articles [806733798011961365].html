@@ -1,0 +1,2016 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bright-Dawn™ - dnd-articles</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+            font-weight: 600;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+            font-weight: 700;
+        }
+
+        body {
+            background-color: #36393e;
+            color: #dcddde;
+            font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        a {
+            color: #00aff4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            object-fit: contain;
+        }
+
+        .markdown {
+            max-width: 100%;
+            line-height: 1.3;
+            overflow-wrap: break-word;
+        }
+
+        .preserve-whitespace {
+            white-space: pre-wrap;
+        }
+
+        .spoiler-text {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .spoiler-text--hidden {
+            cursor: pointer;
+            background-color: #202225;
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .spoiler-text--hidden:hover {
+            background-color: rgba(32, 34, 37, 0.8);
+        }
+
+        .spoiler-text--hidden::selection {
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .quote {
+            display: flex;
+            margin: 0.05em 0;
+        }
+
+        .quote::before {
+            content: "";
+            margin-right: 0.5em;
+            border: 2px solid #4f545c;
+            border-radius: 3px;
+        }
+
+        .pre {
+            background-color: #2f3136;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+        }
+
+        .pre--multiline {
+            margin-top: 0.25em;
+            padding: 0.5em;
+            border: 2px solid #282b30;
+            border-radius: 5px;
+            color: #b9bbbe;
+        }
+
+        .pre--multiline.hljs {
+            background-color: #2f3136;
+            color: #b9bbbe;
+        }
+
+        .pre--inline {
+            padding: 2px;
+            border-radius: 3px;
+            font-size: 0.85em;
+        }
+
+        .mention {
+            border-radius: 3px;
+            padding: 0 2px;
+            color: #7289da;
+            background-color: rgba(114, 137, 218, .1);
+            font-weight: 500;
+        }
+
+        .timestamp {
+            border-radius: 3px;
+            padding: 0 2px;
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .emoji {
+            width: 1.325em;
+            height: 1.325em;
+            margin: 0 0.06em;
+            vertical-align: -0.4em;
+        }
+
+        .emoji--small {
+            width: 1em;
+            height: 1em;
+        }
+
+        .emoji--large {
+            width: 2.8em;
+            height: 2.8em;
+        }
+
+        .preamble {
+            display: grid;
+            margin: 0 0.3em 0.6em 0.3em;
+            max-width: 100%;
+            grid-template-columns: auto 1fr;
+        }
+
+        .preamble__guild-icon-container {
+            grid-column: 1;
+        }
+
+        .preamble__guild-icon {
+            max-width: 88px;
+            max-height: 88px;
+        }
+
+        .preamble__entries-container {
+            grid-column: 2;
+            margin-left: 0.6em;
+        }
+
+        .preamble__entry {
+            font-size: 1.4em;
+            color: #ffffff;
+        }
+
+        .preamble__entry--small {
+            font-size: 1em;
+        }
+
+        .chatlog {
+            max-width: 100%;
+        }
+
+        .chatlog__message-group {
+            display: grid;
+            margin: 0 0.6em;
+            padding: 0.9em 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            grid-template-columns: auto 1fr;
+        }
+
+        .chatlog__reference-symbol {
+            grid-column: 1;
+            margin: 8px 4px 4px 18px;
+            border-left: 2px solid #4f545c;
+            border-top: 2px solid #4f545c;
+            border-radius: 8px 0 0 0;
+        }
+
+        .chatlog__reference {
+            display: flex;
+            grid-column: 2;
+            margin-bottom: 0.25em;
+            font-size: 0.875em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            align-items: center;
+            color: #b5b6b8;
+        }
+
+        .chatlog__reference-avatar {
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            margin-right: 0.25em;
+        }
+
+        .chatlog__reference-name {
+            margin-right: 0.3em;
+            font-weight: 600;
+        }
+
+        .chatlog__reference-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reference-content a:hover {
+            text-decoration: none;
+        }
+
+        .chatlog__reference-link {
+            cursor: pointer;
+            color: #b5b6b8;
+        }
+
+        .chatlog__reference-link * {
+            display: inline;
+            pointer-events: none;
+        }
+
+        .chatlog__reference-link:hover {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-link:hover *:not(.spoiler-text) {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-edited-timestamp {
+            margin-left: 0.25em;
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__author-avatar-container {
+            grid-column: 1;
+            width: 40px;
+            height: 40px;
+            margin-right: 16px;
+        }
+
+        .chatlog__author-avatar {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .chatlog__messages {
+            grid-column: 2;
+            min-width: 50%;
+        }
+
+        .chatlog__author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .chatlog__timestamp {
+            margin-left: 0.3em;
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__message {
+            padding: 0.1em 0.3em;
+            margin: 0 -0.3em;
+            background-color: transparent;
+            transition: background-color 1s ease;
+        }
+
+        .chatlog__message--highlighted {
+            background-color: rgba(114, 137, 218, 0.2);
+        }
+
+        .chatlog__message--pinned {
+            background-color: rgba(249, 168, 37, 0.05);
+        }
+
+        .chatlog__content {
+            font-size: 0.95em;
+            word-wrap: break-word;
+        }
+
+        .chatlog__edited-timestamp {
+            margin-left: 0.15em;
+            font-size: 0.8em;
+        }
+
+        .chatlog__attachment {
+            display: inline-block;
+            position: relative;
+            margin-top: 0.3em;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden {
+            cursor: pointer;
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatlog__attachment--hidden * {
+            pointer-events: none;
+        }
+
+        .chatlog__attachment-spoiler-caption {
+            display: none;
+            z-index: 999;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0.4em 0.8em;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            color: #dcddde;
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-spoiler-caption {
+            display: block;
+        }
+
+        .chatlog__attachment--hidden:hover .chatlog__attachment-spoiler-caption {
+            color: #fff;
+        }
+
+        .chatlog__attachment-media {
+            vertical-align: top;
+            max-width: 45vw;
+            max-height: 500px;
+            border-radius: 3px;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-media {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic {
+            width: 100%;
+            max-width: 520px;
+            height: 40px;
+            padding: 10px;
+            background-color: #2f3136;
+            border: 1px solid #292b2f;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-generic {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic-icon {
+            float: left;
+            width: 30px;
+            height: 100%;
+            margin-right: 10px;
+        }
+
+        .chatlog__attachment-generic-size {
+            color: #72767d;
+            font-size: 12px;
+        }
+
+        .chatlog__attachment-generic-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__edited-timestamp {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__embed {
+            display: flex;
+            margin-top: 0.3em;
+            max-width: 520px;
+        }
+
+        .chatlog__embed-color-pill {
+            flex-shrink: 0;
+            width: 0.25em;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .chatlog__embed-color-pill--default {
+            background-color: #202225;
+        }
+
+        .chatlog__embed-content-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5em 0.6em;
+            background-color: rgba(46, 48, 54, 0.3);
+            border: 1px solid rgba(46, 48, 54, 0.6);
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        .chatlog__embed-content {
+            display: flex;
+            width: 100%;
+        }
+
+        .chatlog__embed-text {
+            flex: 1;
+        }
+
+        .chatlog__embed-author {
+            display: flex;
+            margin-bottom: 0.3em;
+            align-items: center;
+        }
+
+        .chatlog__embed-author-icon {
+            margin-right: 0.5em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .chatlog__embed-author-name {
+            font-size: 0.875em;
+            font-weight: 600;
+            color: #ffffff
+        }
+
+        .chatlog__embed-author-name-link {
+            color: #ffffff;
+        }
+
+        .chatlog__embed-title {
+            margin-bottom: 0.2em;
+            font-size: 0.875em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .chatlog__embed-description {
+            font-weight: 500;
+            font-size: 0.85em;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0.5em;
+        }
+
+        .chatlog__embed-field {
+            flex: 0;
+            min-width: 100%;
+            max-width: 506px;
+            padding-top: 0.6em;
+            font-size: 0.875em;
+        }
+
+        .chatlog__embed-field--inline {
+            flex: 1;
+            flex-basis: auto;
+            min-width: 150px;
+        }
+
+        .chatlog__embed-field-name {
+            margin-bottom: 0.2em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .chatlog__embed-field-value {
+            font-weight: 500;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-thumbnail {
+            flex: 0;
+            margin-left: 1.2em;
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-image-container {
+            margin-top: 0.6em;
+        }
+
+        .chatlog__embed-image {
+            max-width: 500px;
+            max-height: 400px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-footer {
+            margin-top: 0.6em;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-footer-icon {
+            margin-right: 0.2em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .chatlog__embed-footer-text {
+            vertical-align: middle;
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-plainimage {
+            vertical-align: top;
+            max-width: 45vw;
+            max-height: 500px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-spotify {
+            border: 0;
+        }
+
+        .chatlog__embed-youtube-container {
+            margin-top: 0.6em;
+        }
+
+        .chatlog__embed-youtube {
+            border: 0;
+            border-radius: 3px;
+        }
+
+        .chatlog__reactions {
+            display: flex;
+        }
+
+        .chatlog__reaction {
+            display: flex;
+            align-items: center;
+            margin: 0.35em 0.1em 0.1em 0.1em;
+            padding: 0.2em 0.35em;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .chatlog__reaction-count {
+            min-width: 9px;
+            margin-left: 0.35em;
+            font-size: 0.875em;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .chatlog__bot-tag {
+            position: relative;
+            top: -.1em;
+            margin-left: 0.3em;
+            padding: 0.05em 0.3em;
+            border-radius: 3px;
+            line-height: 1.3;
+            background-color: #5865F2;
+            color: #ffffff;
+            font-size: 0.625em;
+            font-weight: 500;
+        }
+
+        .postamble {
+            margin: 1.4em 0.3em 0.6em 0.3em;
+            padding: 1em;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .postamble__entry {
+            color: #ffffff;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler-text--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler-text--hidden');
+            }
+            if (element && element.classList.contains('chatlog__attachment--hidden')) {
+                event.preventDefault();
+                element.classList.remove('chatlog__attachment--hidden');
+            }
+        }
+    </script>
+
+    <svg style="display: none">
+        <symbol id="icon-attachment" viewBox="0 0 720 960">
+            <path fill="#f4f5fb" d="M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z" />
+            <path fill="#7789c4" d="M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z" />
+            <path fill="#f4f5fb" d="M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z" />
+            <path fill="#7789c4" d="M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z" />
+        </symbol>
+    </svg>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/625068275310788670/b2daadd9b35c4363d0d4fa533292a873.png" alt="Guild icon" loading="lazy">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Bright-Dawn™</div>
+        <div class="preamble__entry">General/Guild hall &#129395; / dnd-articles</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">03-Feb-21 10:53 PM</span>
+
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="806734106914193408" id="message-806734106914193408" title="Message sent: 03-Feb-21 10:53 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This channel is to post links to great dnd articles and videos to learn more about this great game!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="806734476096438292" id="message-806734476096438292" title="Message sent: 03-Feb-21 10:54 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/KucEKGfdhQg">https://youtu.be/KucEKGfdhQg</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCe5KNXqT7970K8vkHb5BQ5Q">Ginny Di</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=KucEKGfdhQg">
+                                                        <div class="markdown preserve-whitespace">10 things DMs wish players knew</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/KucEKGfdhQg" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="thumbsup">
+                                <img class="emoji emoji--small" alt="&#128077;" src="https://twemoji.maxcdn.com/2/svg/1f44d.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/280807972668571648/42d46ba9483783dc6ee798658f138196.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Telemanar#0261" data-user-id="280807972668571648" style="color: rgb(113,54,138)">Tele/Uproar/14</span>
+
+
+        <span class="chatlog__timestamp">04-Feb-21 09:19 AM</span>
+
+            <div class="chatlog__message " data-message-id="806891714065203281" id="message-806891714065203281" title="Message sent: 04-Feb-21 09:19 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I like #2</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="806892856949080134" id="message-806892856949080134" title="Message sent: 04-Feb-21 09:24 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">#7</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/773979185353064478/f463e6432227f38781ab9417e3d2b9fa.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="seanwhit#3560" data-user-id="773979185353064478" style="color: rgb(245,145,95)">Sean W./Wren Tu/08</span>
+
+
+        <span class="chatlog__timestamp">04-Feb-21 09:40 AM</span>
+
+            <div class="chatlog__message " data-message-id="806896973382156399" id="message-806896973382156399" title="Message sent: 04-Feb-21 09:40 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">So, who is your favorite youtube DM/D&amp;D guru?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="806897414631456889" id="message-806897414631456889" title="Message sent: 04-Feb-21 09:42 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Nerdarchy? Dungeon Dudes? Treantmonk? Taking20?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/378245678628864010/24ac57823897e229d5c3004021cf1a17.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Koda#2642" data-user-id="378245678628864010" style="color: rgb(241,196,15)">Koda/Fornath/14</span>
+
+
+        <span class="chatlog__timestamp">04-Feb-21 09:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="806897996725223454" id="message-806897996725223454" title="Message sent: 04-Feb-21 09:44 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I often suggest the Dungeon Dudes videos to friends or newbies on Reddit to explain some of the more complicated things like action economy or spellcasting</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/773979185353064478/f463e6432227f38781ab9417e3d2b9fa.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="seanwhit#3560" data-user-id="773979185353064478" style="color: rgb(245,145,95)">Sean W./Wren Tu/08</span>
+
+
+        <span class="chatlog__timestamp">04-Feb-21 09:48 AM</span>
+
+            <div class="chatlog__message " data-message-id="806898938849263636" id="message-806898938849263636" title="Message sent: 04-Feb-21 09:48 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I like the Dungeon Dudes best. I think their videos are put together well and I think they do well in front of the camera. I just am not too familiar with rules and stuff, so if they give out false info, I&#39;m not going to spot it right away.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol"></div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/773979185353064478/f463e6432227f38781ab9417e3d2b9fa.png?size=128" alt="Avatar" loading="lazy">
+                <span class="chatlog__reference-name" title="seanwhit#3560" style="color: rgb(245,145,95)">Sean W./Wren Tu/08</span>
+                <div class="chatlog__reference-content">
+                    <span class="chatlog__reference-link" onclick="scrollToMessage(event, &#39;806898938849263636&#39;)">
+I like the Dungeon Dudes best. I think their videos are put together well and I think they do well in front of the camera. I just am not too familiar with rules and stuff, so if they give out false info, I&#39;m not going to spot it right away.                    </span>
+
+                </div>
+        </div>
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/378245678628864010/24ac57823897e229d5c3004021cf1a17.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Koda#2642" data-user-id="378245678628864010" style="color: rgb(241,196,15)">Koda/Fornath/14</span>
+
+
+        <span class="chatlog__timestamp">04-Feb-21 10:12 AM</span>
+
+            <div class="chatlog__message " data-message-id="806905051871707190" id="message-806905051871707190" title="Message sent: 04-Feb-21 10:12 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It&#39;s happened occasionally, but I&#39;ve seen less wrong stuff from them then some of the others.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="thumbsup">
+                                <img class="emoji emoji--small" alt="&#128077;" src="https://twemoji.maxcdn.com/2/svg/1f44d.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">12-Feb-21 02:43 AM</span>
+
+            <div class="chatlog__message " data-message-id="809691130408599622" id="message-809691130408599622" title="Message sent: 12-Feb-21 02:43 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://www.youtube.com/watch?v=e9OOP0QPUgg&ab_channel=ZeeBashew">https://www.youtube.com/watch?v=e9OOP0QPUgg&amp;ab_channel=ZeeBashew</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCCXR2kCo7Lcw_BKwWxo09kw">Zee Bashew</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=e9OOP0QPUgg">
+                                                        <div class="markdown preserve-whitespace">(Animated Spellbook) Mending!</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/e9OOP0QPUgg" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/280807972668571648/42d46ba9483783dc6ee798658f138196.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Telemanar#0261" data-user-id="280807972668571648" style="color: rgb(113,54,138)">Tele/Uproar/14</span>
+
+
+        <span class="chatlog__timestamp">12-Feb-21 09:24 AM</span>
+
+            <div class="chatlog__message " data-message-id="809791970896904193" id="message-809791970896904193" title="Message sent: 12-Feb-21 09:24 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">You learned how to F the game and now you&#39;re teaching other people to F the game xD</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/189705190121668609/393a584028c6705fe20e60cc29db4b35.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Sethlord#5889" data-user-id="189705190121668609" style="color: rgb(113,54,138)">Sethlord/Sanguis/L11</span>
+
+
+        <span class="chatlog__timestamp">27-Feb-21 06:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="815363571180503061" id="message-815363571180503061" title="Message sent: 27-Feb-21 06:23 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">holy crap does this guy have more videos like that? That was hilarious</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/292719384965939200/78b7996a4f39fc1d072468ff115e1e89.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Monker#6361" data-user-id="292719384965939200" style="color: rgb(215,52,42)">Monker/Zol/L07</span>
+
+
+        <span class="chatlog__timestamp">27-Feb-21 06:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="815364495043461180" id="message-815364495043461180" title="Message sent: 27-Feb-21 06:27 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">All his videos are animated. I actually like the one were he talks about the school of conjuration.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">06-Mar-21 07:38 AM</span>
+
+            <div class="chatlog__message " data-message-id="817737842649202719" id="message-817737842649202719" title="Message sent: 06-Mar-21 07:38 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Not genius, but nice pointers
+
+<a href="https://youtu.be/ce2FjRfRv7Q">https://youtu.be/ce2FjRfRv7Q</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCly0Thn_yZouwdJtg7Am62A">Taking20</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=ce2FjRfRv7Q">
+                                                        <div class="markdown preserve-whitespace">Epic Dungeons All have These...</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/ce2FjRfRv7Q" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol"></div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+                <span class="chatlog__reference-name" title="TehManticore#0779" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+                <div class="chatlog__reference-content">
+                    <span class="chatlog__reference-link" onclick="scrollToMessage(event, &#39;809691130408599622&#39;)">
+<a href="https://www.youtube.com/watch?v=e9OOP0QPUgg&ab_channel=ZeeBashew">https://www.youtube.com/watch?v=e9OOP0QPUgg&amp;ab_channel=ZeeBashew</a>                    </span>
+
+                </div>
+        </div>
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/280256955082080256/e8abf30734eaefeda005119410c90821.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Opti#5174" data-user-id="280256955082080256" style="">Opti</span>
+
+
+        <span class="chatlog__timestamp">06-Mar-21 11:00 AM</span>
+
+            <div class="chatlog__message " data-message-id="817788849941381141" id="message-817788849941381141" title="Message sent: 06-Mar-21 11:00 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Mending is how you fix lopped off limbs.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">03-Apr-21 07:05 AM</span>
+
+            <div class="chatlog__message " data-message-id="827861337324519434" id="message-827861337324519434" title="Message sent: 03-Apr-21 07:05 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Roll20 on the problems this past month
+<a href="https://blog.roll20.net/posts/march-2021-downtime/?fbclid=IwAR2UE3o-CbST_KKA9T4HP0x6HhBamO3FyemptcYX67qVNlqTdOB2EnOEdNg">https://blog.roll20.net/posts/march-2021-downtime/?fbclid=IwAR2UE3o-CbST_KKA9T4HP0x6HhBamO3FyemptcYX67qVNlqTdOB2EnOEdNg</a></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">25-Apr-21 09:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="836053264050290778" id="message-836053264050290778" title="Message sent: 25-Apr-21 09:37 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Through May 2, 25% off all books on D&amp;D Beyond!&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">11-May-21 07:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="841636578509979649" id="message-841636578509979649" title="Message sent: 11-May-21 07:23 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://nerdist.com/article/dungeons-dragons-tv-series-in-development">https://nerdist.com/article/dungeons-dragons-tv-series-in-development</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://nerdist.com/author/eric-diaz/">Eric Diaz</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://nerdist.com/article/dungeons-dragons-tv-series-in-development">
+                                                        <div class="markdown preserve-whitespace">DUNGEONS &amp; DRAGONS TV Series in Development - Nerdist</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">Be ready to get your sword and shield. The world of Dungeons &amp; Dragons is coming to TV, hoping to be the next big epic fantasy series.</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="https://images-ext-2.discordapp.net/external/muiROsJW20vyDsrHG5N3KhmESNGOO4_dPc5MnM0iPkc/https/nerdist.com/wp-content/uploads/2021/01/wp4786826.png">
+                                                <img class="chatlog__embed-thumbnail" src="https://images-ext-2.discordapp.net/external/muiROsJW20vyDsrHG5N3KhmESNGOO4_dPc5MnM0iPkc/https/nerdist.com/wp-content/uploads/2021/01/wp4786826.png" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">13-May-21 07:58 AM</span>
+
+            <div class="chatlog__message " data-message-id="842370107710767125" id="message-842370107710767125" title="Message sent: 13-May-21 07:58 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://blog.roll20.net/posts/retiring-legacy-dynamic-lighting-what-you-need-to-know/">https://blog.roll20.net/posts/retiring-legacy-dynamic-lighting-what-you-need-to-know/</a></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">29-May-21 04:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="848109028872683543" id="message-848109028872683543" title="Message sent: 29-May-21 04:02 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/7UuA9vK16rI">https://youtu.be/7UuA9vK16rI</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCCXR2kCo7Lcw_BKwWxo09kw">Zee Bashew</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=7UuA9vK16rI">
+                                                        <div class="markdown preserve-whitespace">5E dnd (animated spellbook) Rope Trick!</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/7UuA9vK16rI" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="849082377887154257" id="message-849082377887154257" title="Message sent: 31-May-21 08:30 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Didn&#39;t know where else to put this:
+When you&#39;ve got something like Bloodwell Vial or Rod of the Pact Keeper that increases your attack/spell DC, but you&#39;re multiclassed so you don&#39;t want it to increase all attacks/DCs, you can specify it a little bit.
+
+When you choose &quot;Spellcasting Ability&quot; for a spell, you can choose any of the stats or the &quot;Spell&quot; stat. Spell stat is the one named at the top of your spell tab under &quot;Spellcasting Ability&quot;.
+
+When you have something like the vial or rod that increases attack or DC, <strong>it only adds it when you choose &quot;Spell&quot; for the spellcasting ability. </strong>
+
+Otherwise, choosing any other stat (even the one that is the same as your spellcasting ability) WON&#39;T gain the bonus from the magic item.
+
+I <em>think</em> you can change what is your &quot;Spellcasting Ability&quot; in the Attributes &amp; Abilities tab of your character sheet. I haven&#39;t tested this yet, though.
+ 
+In fact, I haven&#39;t tested this extensively, I just noticed it now while playing.</span>
+
+                                <span class="chatlog__edited-timestamp" title="31-May-21 08:40 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/292719384965939200/78b7996a4f39fc1d072468ff115e1e89.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Monker#6361" data-user-id="292719384965939200" style="color: rgb(215,52,42)">Monker/Zol/L07</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="849084734431690773" id="message-849084734431690773" title="Message sent: 31-May-21 08:39 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Mmm, there most be macro for the item cuz if bought Tashas book and if You drag the item and click the square that says that You have it equipped, the sheet actually changes.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="849085079804182568" id="message-849085079804182568" title="Message sent: 31-May-21 08:40 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yar. It will change the Attack DC for the sheet and will reflect in any spell that have &quot;Spell&quot; chosen as the spellcasting ability. Any others won&#39;t get it applied when you click it to roll20 chat</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol"></div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/292719384965939200/78b7996a4f39fc1d072468ff115e1e89.png?size=128" alt="Avatar" loading="lazy">
+                <span class="chatlog__reference-name" title="Monker#6361" style="color: rgb(215,52,42)">Monker/Zol/L07</span>
+                <div class="chatlog__reference-content">
+                    <span class="chatlog__reference-link" onclick="scrollToMessage(event, &#39;849084734431690773&#39;)">
+Mmm, there most be macro for the item cuz if bought Tashas book and if You drag the item and click the square that says that You have it equipped, the sheet actually changes.                    </span>
+
+                </div>
+        </div>
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/378245678628864010/24ac57823897e229d5c3004021cf1a17.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Koda#2642" data-user-id="378245678628864010" style="color: rgb(241,196,15)">Koda/Fornath/14</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="849085622119694376" id="message-849085622119694376" title="Message sent: 31-May-21 08:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It&#39;s not a macro, rather inventory items can have attributes that will adjust what&#39;s on your sheet. Spell attacks, spell saves, ability scores, AC, and skills can all get boots or overridden by inventory items with the proper attributes</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="849085788960587826" id="message-849085788960587826" title="Message sent: 31-May-21 08:43 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">the compendium items will already have those attributes when applicable</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="849085949555769425" id="message-849085949555769425" title="Message sent: 31-May-21 08:44 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">if you uncheck the box in your inventory showing the item is unequipped, your stats return to normal</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="point_up_2">
+                                <img class="emoji emoji--small" alt="&#128070;" src="https://twemoji.maxcdn.com/2/svg/1f446.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="849086706429722635" id="message-849086706429722635" title="Message sent: 31-May-21 08:47 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">When I play a druid I use a combination of stat-changing &quot;armor,&quot; attack macros, and a rollable token to handle wildshapes with a single sheet</span>
+
+                                <span class="chatlog__edited-timestamp" title="31-May-21 08:47 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="849086941147430942" id="message-849086941147430942" title="Message sent: 31-May-21 08:48 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">So for example:
+You&#39;re a Sorc/Wiz. Your spell tab says &quot;Spellcasting Ability&quot; is Charisma.
+You have +1 Bloodwell Vial which is supposed to add only to your Sorcerer spells.
+Setting all your Wizard spells to have &quot;Spellcasting Ability: Intelligence&quot; will prevent the bloodwell vial adding +1 to the attack/dc when you click to send it to Roll20 chat.
+You could even change those Wizard spells to Charisma, and it won&#39;t add it. It will only add the +1 from the vial when you have &quot;Spell&quot; selected as the Spellcasting Ability.</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <a href="https://cdn.discordapp.com/attachments/806733798011961365/849086938648018944/unknown.png">
+                                <img class="chatlog__attachment-media" src="https://cdn.discordapp.com/attachments/806733798011961365/849086938648018944/unknown.png" alt="Image attachment" title="Image: unknown.png (8.1 KB)" loading="lazy">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/378245678628864010/24ac57823897e229d5c3004021cf1a17.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Koda#2642" data-user-id="378245678628864010" style="color: rgb(241,196,15)">Koda/Fornath/14</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="849087250128961536" id="message-849087250128961536" title="Message sent: 31-May-21 08:49 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">until it gets really complicated and you have both a Wand of the War Mage <em>and</em> a Bloodwell Vial</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="849087285671493672" id="message-849087285671493672" title="Message sent: 31-May-21 08:49 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yar</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/378245678628864010/24ac57823897e229d5c3004021cf1a17.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Koda#2642" data-user-id="378245678628864010" style="color: rgb(241,196,15)">Koda/Fornath/14</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="849087339157782528" id="message-849087339157782528" title="Message sent: 31-May-21 08:49 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">that&#39;s why I make custom macros for my attacks, even spell attacks</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="849087376679764009" id="message-849087376679764009" title="Message sent: 31-May-21 08:50 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">it&#39;s all in the macro at that point</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/292719384965939200/78b7996a4f39fc1d072468ff115e1e89.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Monker#6361" data-user-id="292719384965939200" style="color: rgb(215,52,42)">Monker/Zol/L07</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="849087910070452244" id="message-849087910070452244" title="Message sent: 31-May-21 08:52 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">The item in roll20 can actually distiguish the diference between using charisma or inteligence as the spellcasting ability?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="849087988959936522" id="message-849087988959936522" title="Message sent: 31-May-21 08:52 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(sorry, I AM on the Cellphone. Writing is super difficult)</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">31-May-21 08:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="849088040169373706" id="message-849088040169373706" title="Message sent: 31-May-21 08:52 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Nah, it just distinguishes whether your spells have &quot;Spell&quot; or the specific stat selected</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="849088215553409114" id="message-849088215553409114" title="Message sent: 31-May-21 08:53 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">So in that screenshot above, if you select &quot;spell&quot;, it adds any bonuses from equipped gear to the spell&#39;s output. Otherwise it won&#39;t and will JUST be the stat.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">06-Jun-21 10:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="851285863342407710" id="message-851285863342407710" title="Message sent: 06-Jun-21 10:26 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://3wisedms.com/21-things-wise-dms-wants-from-their-best-rpg-players/?fbclid=IwAR3atW-D9cIRdTUU4RC4lJFS1-6aeZUzzYU8qGdXaGI4UTG9WGxIfgN2VBI">https://3wisedms.com/21-things-wise-dms-wants-from-their-best-rpg-players/?fbclid=IwAR3atW-D9cIRdTUU4RC4lJFS1-6aeZUzzYU8qGdXaGI4UTG9WGxIfgN2VBI</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://3wisedms.com/author/thorinmcgee/">Thorin</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://3wisedms.com/21-things-wise-dms-wants-from-their-best-rpg-players/?fbclid=IwAR3atW-D9cIRdTUU4RC4lJFS1-6aeZUzzYU8qGdXaGI4UTG9WGxIfgN2VBI">
+                                                        <div class="markdown preserve-whitespace">21 Things Wise DMs Want From Their Best RPG Players</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">It takes more than just a Wise DM to make a great roleplaying game campaign. No matter how thoroughly you plan or brilliantly you improv, the DM is only one person in a group of 2 to 10 or more peo…</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="https://images-ext-2.discordapp.net/external/mwrlf3DBXMsh9v0kXtWPrcHYy-6HuBD5rfA5j38mKBs/%3Ffit%3D1200%252C821%26ssl%3D1/https/i2.wp.com/3wisedms.com/wp-content/uploads/2021/06/Good-Players.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="https://images-ext-2.discordapp.net/external/mwrlf3DBXMsh9v0kXtWPrcHYy-6HuBD5rfA5j38mKBs/%3Ffit%3D1200%252C821%26ssl%3D1/https/i2.wp.com/3wisedms.com/wp-content/uploads/2021/06/Good-Players.jpg" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="sparkling_heart">
+                                <img class="emoji emoji--small" alt="&#128150;" src="https://twemoji.maxcdn.com/2/svg/1f496.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/590439531199725578/cdc2336f076d2b234e6eaaf40bd4b3b0.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TehManticore#0779" data-user-id="590439531199725578" style="color: rgb(228,180,0)">TehManticore~Eliri~L12</span>
+
+
+        <span class="chatlog__timestamp">16-Jun-21 10:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="854912659731251230" id="message-854912659731251230" title="Message sent: 16-Jun-21 10:37 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/8VNdg1t4bBY">https://youtu.be/8VNdg1t4bBY</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCt_HCeC21_G4XJEyRWaqYEg">The Dungeon Newb&#39;s Guide</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=8VNdg1t4bBY">
+                                                        <div class="markdown preserve-whitespace">AboveVTT - The Best New D&amp;D Virtual Tabletop!?</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/8VNdg1t4bBY" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/378245678628864010/24ac57823897e229d5c3004021cf1a17.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Koda#2642" data-user-id="378245678628864010" style="color: rgb(241,196,15)">Koda/Fornath/14</span>
+
+
+        <span class="chatlog__timestamp">17-Jul-21 11:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="866164827676082216" id="message-866164827676082216" title="Message sent: 17-Jul-21 11:49 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Via <span class="mention" title="Rezmonk#3740">@Rezmonk/Mathais Stormwalker/09</span> for <span class="mention" title="Aster#3194">@Aster/N&#253;x Boud&#232;vil/07</span> 
+<a href="https://youtu.be/x_-tExVWSNM">https://youtu.be/x_-tExVWSNM</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCVnbPpmSOZsjEIukExi2NNQ">How to D&amp;D</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=x_-tExVWSNM">
+                                                        <div class="markdown preserve-whitespace">Clever Uses of Soap in Dungeons &amp; Dragons 5E</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/x_-tExVWSNM" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="Wah">
+                                <img class="emoji emoji--small" alt="Wah" src="https://cdn.discordapp.com/emojis/774331846321373204.png" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction" title="horse">
+                                <img class="emoji emoji--small" alt="&#128052;" src="https://twemoji.maxcdn.com/2/svg/1f434.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction" title="joy">
+                                <img class="emoji emoji--small" alt="&#128514;" src="https://twemoji.maxcdn.com/2/svg/1f602.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/143405947245690880/ec220a227f8b3f44e328946ff1d6d88e.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Aster#3194" data-user-id="143405947245690880" style="color: rgb(26,188,156)">Aster/N&#253;x Boud&#232;vil/07</span>
+
+
+        <span class="chatlog__timestamp">17-Jul-21 11:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="866165234624757791" id="message-866165234624757791" title="Message sent: 17-Jul-21 11:51 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I appreciate it.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="thumbsup">
+                                <img class="emoji emoji--small" alt="&#128077;" src="https://twemoji.maxcdn.com/2/svg/1f44d.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/476510763997986826/11a0814ba4bb97d2e8c7a26802bd1230.png?size=128" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="terminalcpl#3356" data-user-id="476510763997986826" style="color: rgb(26,188,156)">Terminal/Edo/L06</span>
+
+
+        <span class="chatlog__timestamp">17-Jul-21 11:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="866165855763038259" id="message-866165855763038259" title="Message sent: 17-Jul-21 11:53 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;ve seen a text screen shot of Soap of silence lubricate your shoes and slide quietly down a hallway.  This is great</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="rofl">
+                                <img class="emoji emoji--small" alt="&#129315;" src="https://twemoji.maxcdn.com/2/svg/1f923.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 41 message(s)</div>
+</div>
+
+</body>
+
+</html>
